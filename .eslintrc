@@ -1,0 +1,18 @@
+
+{
+  "root": true,
+  "extends": ["@handsomewolf/eslint-config"],
+  "overrides": [
+    {
+      "files": ["packages/web-client/**/*"],
+      "settings": {
+        "import/resolver": {
+          "alias": {
+            "map": [["@", "./packages/web-client/src"]],
+            "extensions": [".ts", ".vue"]
+          }
+        }
+      }
+    }
+  ]
+}
