@@ -241,12 +241,19 @@ export class ExcelHelper {
       // 排除表头行
       if (rowNumber > 1) {
         row.eachCell((cell) => {
-          // 设置背景颜色
-          cell.style.fill = {
-            type: "pattern",
-            pattern: "solid",
-            fgColor: { argb: color[rowNumber - 2] },
-          };
+          const currentColor = color[rowNumber - 2];
+          if (currentColor) {
+            // 设置背景颜色
+            cell.style.fill = {
+              type: "pattern",
+              pattern: "solid",
+              fgColor: {
+                argb: currentColor.startsWith("#")
+                  ? `FF${currentColor.slice(1)}`
+                  : currentColor,
+              },
+            };
+          }
         });
       }
     });
